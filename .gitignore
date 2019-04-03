@@ -1,0 +1,9 @@
+**/tags
+**/inc/tags
+**/src/tags
+**/out/
+**/obj/
+**/lib/
+**/.settings/
+**/.project
+**/.cproject
