@@ -17,7 +17,7 @@ ASSIGN==
 
 #======================================================================#
 #Cross Compiler
-CCPREFIX=/home/lukasz/Desktop/projects/rpi/toolchain/linaro/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
+CCPREFIX=/opt/rpi/linaro/gcc-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-
 CC=$(CCPREFIX)g++
 READELF=$(CCPREFIX)readelf
 
