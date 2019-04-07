@@ -70,6 +70,21 @@ uint8_t gpio_handler::get_relay_state(void)
 	return value;
 }
 
+void gpio_handler::set_buzzer(uint8_t state)
+{
+
+	if(state) {
+                fprintf(stderr, "[%s] Activiating buzzer\n", __func__);
+                gpio_function_set(gpio, 6, 6);
+                gpio_level_set(gpio, 6, 1);
+        }
+        else {
+                fprintf(stderr, "[%s] Deactiviating buzzer\n", __func__);
+                gpio_function_set(gpio, 6, 6);
+                gpio_level_set(gpio, 6, 0);
+                //gpio_function_set(gpio, 6, 7);
+        }
+}
 
 void *gpio_handler::mapmem(uint32_t base, uint32_t size, const char *mem_dev)
 {

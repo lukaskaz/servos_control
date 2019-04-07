@@ -17,9 +17,10 @@ public:
     ~gpio_handler() { destroy(); } 
 
 protected:
-    void set_relay(uint8_t state);
+    void set_relay(uint8_t);
     void switch_relay(void);
-    
+    void set_buzzer(uint8_t);    
+
     uint8_t get_relay_state(void);
     uint8_t get_emerg_state(void);
 

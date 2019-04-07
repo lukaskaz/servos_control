@@ -5,6 +5,7 @@
 #include <cstring>
 #include <thread>
 
+#include "rgb_if.hpp"
 #include "helper.hpp"
 #include "adcs.hpp"
 #include "servos.hpp"
@@ -314,10 +315,30 @@ bool servos_handler::is_tilt_conflict(servo_it servo, pos_it pos)
                 log(LOG_ERROR, __func__, "Invalid tilt ("+std::to_string(delta)\
                   +"°) for servos "+servo->name+"("+std::to_string(tilt_main)+"°), "
                   +conflict_servo->name+"("+std::to_string(tilt_comp)+"°)");
+
+
+                uint16_t tmp_time = 0;
+                for(uint16_t i = 3; i > 0; i--) {
+                    //set_buzzer(true);
+                    tmp_time = 0;
+                    while(tmp_time++ < 25) {
+                        rgb_set_color(RGB_RED, 10*tmp_time+5);
+                        usleep(20);
+                    }
+
+                    //set_buzzer(false);
+                    tmp_time = 25;
+                    while(tmp_time--) {
+                        rgb_set_color(RGB_RED, 10*tmp_time+5);
+                        usleep(20);
+                    }
+                }
+                rgb_set_color(RGB_RED, 255);
                 return true;
             }
         }
     }
+    rgb_set_color(RGB_GREEN, 0x3F);
 
     return false;
 }
