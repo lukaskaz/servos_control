@@ -87,6 +87,11 @@ public:
 
     void run(void);  
 
+    int16_t servo_1_pos(servo_it, uint16_t);
+    int16_t servo_2_pos(servo_it, uint16_t);
+    int16_t servo_3_pos(servo_it, uint16_t);
+    int16_t servo_4_pos(servo_it, uint16_t);
+
 private:
     static std::mutex servo_mtx;
     std::vector<servo_t> servos;
@@ -121,11 +126,6 @@ private:
     void trackAndUpdateThread(void);
 
     int16_t servo_pos_handler(servo_it, int16_t, bool, uint16_t);
-
-    int16_t servo_1_pos(servo_it, uint16_t);
-    int16_t servo_2_pos(servo_it, uint16_t);
-    int16_t servo_3_pos(servo_it, uint16_t);
-    int16_t servo_4_pos(servo_it, uint16_t);
 
     bool is_emerg_active(void);
 };
