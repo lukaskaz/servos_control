@@ -316,24 +316,13 @@ bool servos_handler::is_tilt_conflict(servo_it servo, pos_it pos)
                   +"°) for servos "+servo->name+"("+std::to_string(tilt_main)+"°), "
                   +conflict_servo->name+"("+std::to_string(tilt_comp)+"°)");
 
+                rgb_set_color(RGB_RED, RGB_BRIGHT_MAX);
 
-                uint16_t tmp_time = 0;
-                for(uint16_t i = 3; i > 0; i--) {
-                    //set_buzzer(true);
-                    tmp_time = 0;
-                    while(tmp_time++ < 25) {
-                        rgb_set_color(RGB_RED, 10*tmp_time+5);
-                        usleep(20);
-                    }
+                set_buzzer(true);
+                rgb_dimm_color(RGB_RED, RGB_FADE_DOWN, 50);
+                rgb_dimm_color(RGB_RED, RGB_FADE_UP, 50);
+                set_buzzer(false);
 
-                    //set_buzzer(false);
-                    tmp_time = 25;
-                    while(tmp_time--) {
-                        rgb_set_color(RGB_RED, 10*tmp_time+5);
-                        usleep(20);
-                    }
-                }
-                rgb_set_color(RGB_RED, 255);
                 return true;
             }
         }

@@ -94,6 +94,7 @@ reinstall:
 	@$(MAKE) install
 
 install:
+	@echo "Installing interface and libraries"
 	@if [ ! -f $(LIB_FILE) ]; then \
 		. ./setenv; \
 		scp $$RPI_USER@$$RPI_NODE:/home/$$RPI_USER/Desktop/work/rgb_led/rgb_control_with_lib/rgb-if/lib/librgb-if.so* ./lib/; \
